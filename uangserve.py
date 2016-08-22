@@ -1,4 +1,4 @@
-from uang import getEjaanUang
+from uang import konversiAngkaToEjaan
 from bottle import route, run, request
 import json
 
@@ -6,12 +6,12 @@ import json
 def hello():
     value = request.GET.get('value', 20)
 
-    if int(value) not in range(20, 1000 + 1):
-        return 'error'
+    if int(value) == 0:
+        print 'nol'
     else:
         return json.dumps({
             "value": value,
-            "output": getEjaanUang(int(value))
+            "output": konversiAngkaToEjaan(int(value))
         })
 
 run(host='localhost', port=8888, debug=True)
